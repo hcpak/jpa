@@ -1,9 +1,11 @@
 package jpabook2.jpashop2.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Member {
+public class Member extends hellojpa.BaseEntity {
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
@@ -11,6 +13,10 @@ public class Member {
     private String city;
     private String street;
     private String zipcode;
+
+    //하지만 이 부분은 안 넣는게 설계상 좋다. 관심사를 잘 끊어내는 것도 프로그래머의 자세
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
