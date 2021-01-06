@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.*;
+
 @Entity
 public class Category extends hellojpa.BaseEntity {
     @Id
@@ -12,7 +14,7 @@ public class Category extends hellojpa.BaseEntity {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name ="PARENT_ID") // 잘 모르겠다.
     private Category parent;
 
